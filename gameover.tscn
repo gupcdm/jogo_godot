@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://b2aky3ny6j1pp"]
+
+[ext_resource type="Script" path="res://gameover.gd" id="1_if575"]
+[ext_resource type="Texture2D" uid="uid://hlffsmo67wbu" path="res://GameOver.png" id="1_sje36"]
+[ext_resource type="Texture2D" uid="uid://do2xu2jtvq242" path="res://BtnAgain.png" id="2_7mea8"]
+
+[sub_resource type="Animation" id="Animation_hgu55"]
+resource_name = "reveal"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p2m78"]
+_data = {
+"reveal": SubResource("Animation_hgu55")
+}
+
+[node name="gameover" type="CanvasLayer"]
+script = ExtResource("1_if575")
+
+[node name="BG" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_right = 2.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.392157)
+
+[node name="GameOver" type="Sprite2D" parent="."]
+position = Vector2(541, 256)
+scale = Vector2(3.48148, 3.38889)
+texture = ExtResource("1_sje36")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GameOver"]
+libraries = {
+"": SubResource("AnimationLibrary_p2m78")
+}
+
+[node name="tbt" type="TextureButton" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -89.0
+offset_top = 38.0
+offset_right = 16.0
+offset_bottom = 92.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("2_7mea8")
+stretch_mode = 0
+
+[connection signal="pressed" from="tbt" to="." method="_on_tbt_pressed"]
